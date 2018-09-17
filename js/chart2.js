@@ -46,19 +46,29 @@ function updateLine(country) {
 
     g.append("path")
         .datum(data)
+        .attr("transform", "translate(15,0)")
         .attr("fill", "none")
         .attr("stroke", "#76B7B2")
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
-        .attr("stroke-width", 1.5)
-        .attr("d", line);
+        .attr("stroke-width", 2)
+        .attr("d", line)
+        .append('title') // Tooltip
+        .text(function (d) {
+            return 'No of games won'
+        });
 
     g.append("path")
         .datum(data)
+        .attr("transform", "translate(15,0)")
         .attr("fill", "none")
         .attr("stroke", "#FF8C00")
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
-        .attr("stroke-width", 1.5)
-        .attr("d", line2);
+        .attr("stroke-width", 2)
+        .attr("d", line2)
+        .append('title') // Tooltip
+        .text(function (d) {
+            return 'No of games lost'
+        });
 }

@@ -10,7 +10,16 @@
 	</head>
 	<body>
 	<h2> 10yearAUSOpenMatches </h2>
+
 		<div class="Mycontainer">
+            <select id="mySelect" onchange="updateBarChart(document.getElementById('mySelect').value)">
+                <option value="Europe">Europe</option>
+                <option value="Asia">Asia</option>
+                <option value="Africa">Africa</option>
+                <option value="N America">N America</option>
+                <option value="S America">S America</option>
+                <option value="Oceania">Oceania</option>
+            </select>
 			<svg id="barChart" width="700" height="500"> </svg>
 			<svg id="lineChart" width="480" height="500"> </svg>
 		</div> 

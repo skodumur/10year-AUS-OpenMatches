@@ -1,10 +1,18 @@
 window.onload = function () {
-    updateBarChart();
-    updateLine('GER')
+    updateBarChart('Europe');
 };
 
-function updateBarChart() {
-
+function updateBarChart(continent) {
+    var continentMap = {
+        "Europe": ["BLR", "ARM", "MON", "POR", "BUL", "SLO", "BEL", "NED", "LTU", "SWE", "SVK", "IRL", "FIN", "TUR", "UKR", "KAZ", "POL", "ITA", "LAT", "ROU", "LUX", "ESP", "SUI", "FRA", "SRB", "GBR", "CRO", "CYP", "CZE", "AUT", "RUS", "ISR", "GER", "BIH"],
+        "Asia": ["CHI", "TPE", "UZB", "JPN", "IND", "THA", "KOR"],
+        "Africa":["RSA", "MAR"],
+        "N America": ["USA", "CAN"],
+        "S America": ["ARG", "COL", "BRA", "PER", "ECU"],
+        "Oceania": ["AUS"],
+        "Antarctica":[]
+    };
+    d3.select("#barChart").selectAll('*').remove();
     var svg = d3.select("#barChart"),
     margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = +svg.attr("width") - margin.left - margin.right,
@@ -27,7 +35,12 @@ function updateBarChart() {
         return d;
     }, function(error, data) {
         if (error) throw error;
-
+        data = _.filter(data, function (d) {
+            return _.includes(continentMap[continent], d.Country)
+        });
+        if(data.length > 16) {
+            data = data.splice(0,16);
+        }
         var keys = ['Country', 'Wins', 'Loses'];
 
         x.domain(data.map(function(d) { return d.Country; }));
