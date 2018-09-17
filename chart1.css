@@ -1,7 +1,8 @@
-.container{
+.Mycontainer{
     width: 1200px;
     border: solid 1px;
     height: 600px;
+    margin-left: 50px;
 }
 .axis .domain {
   stroke: #000;
@@ -9,17 +10,16 @@
 .hide{
     display:none;
 }
-#pieChartSVG {
-    position: relative;
+#lineChart {
+    float: right;
+    right: 40px;
     top: 100px;
-    left: 50px;
-    width: 500px;
-    height: 500px;
+    position: relative;
 }
 #barChart {
     position: absolute;
-    top: 25px;
-    left: 50px;
+    top: 145px;
+    left: 45px;
     height: 500px;
 }
 .axis text {
