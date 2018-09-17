@@ -36,12 +36,12 @@ function updateBarChart(continent) {
     }, function(error, data) {
         if (error) throw error;
         data = _.filter(data, function (d) {
-            return _.includes(continentMap[continent], d.Country)
+            return _.includes(continentMap[continent], d.Country);
         });
         if(data.length > 16) {
             data = data.splice(0,16);
         }
-        var keys = ['Country', 'Wins', 'Loses'];
+        var keys = ['Wins', 'Loses'];
 
         x.domain(data.map(function(d) { return d.Country; }));
         y.domain([0, d3.max(data, function(d) { return d.total; })]).nice();
@@ -87,7 +87,7 @@ function updateBarChart(continent) {
             .attr("font-size", 10)
             .attr("text-anchor", "end")
             .selectAll("g")
-            .data(keys.splice(1,2))
+            .data(keys)
             .enter().append("g")
             .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
@@ -102,14 +102,14 @@ function updateBarChart(continent) {
             .attr("y", 9.5)
             .attr("dy", "0.32em")
             .text(function(d) { return d; });
+
         svg.append("text")
             .attr("x", (width + margin.left + margin.right) / 2)
             .attr("y", 15)
             .attr('font-weight', 'bold')
             .attr("class", "title")
             .attr("text-anchor", "middle")
-            .text("Comparison of " + name + " point between winners and losers over the years")
-        ;
+            .text("Comparison of " + name + " point between winners and losers over the years");
 
         svg.selectAll("rect")
             .on("click",function (d) {

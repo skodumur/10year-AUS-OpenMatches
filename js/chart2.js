@@ -6,7 +6,7 @@ function updateLine(country) {
         height = +svg.attr("height") - margin.top - margin.bottom,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
+    var keys = ['Wins', 'Loses'];
     var x = d3.scaleBand()
         .rangeRound([0, width])
         .paddingInner(0.1);
@@ -14,6 +14,8 @@ function updateLine(country) {
     var y = d3.scaleLinear()
         .rangeRound([height, 0]);
 
+    var z = d3.scaleOrdinal()
+        .range(["#ff8c00", "#76b7b2"]);
     var line = d3.line()
         .x(function(d) { return x(parseInt(d.Year)); })
         .y(function(d) { return y(parseInt(d.Count)); });
@@ -51,7 +53,7 @@ function updateLine(country) {
         .attr("stroke", "#76B7B2")
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
-        .attr("stroke-width", 2)
+        .attr("stroke-width", 3)
         .attr("d", line)
         .append('title') // Tooltip
         .text(function (d) {
@@ -65,10 +67,30 @@ function updateLine(country) {
         .attr("stroke", "#FF8C00")
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
-        .attr("stroke-width", 2)
+        .attr("stroke-width", 3)
         .attr("d", line2)
         .append('title') // Tooltip
         .text(function (d) {
             return 'No of games lost'
         });
+    var legend = g.append("g")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 10)
+        .attr("text-anchor", "end")
+        .selectAll("g")
+        .data(keys)
+        .enter().append("g")
+        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+    legend.append("rect")
+        .attr("x", width - 19)
+        .attr("width", 19)
+        .attr("height", 19)
+        .attr("fill", z);
+
+    legend.append("text")
+        .attr("x", width - 24)
+        .attr("y", 9.5)
+        .attr("dy", "0.32em")
+        .text(function(d) { return d; });
 }
