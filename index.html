@@ -1,57 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>DV HW 2</title>
-		<link rel="stylesheet" href="bootstrap.css">
-        <style>
-            .Mycontainer{
-                width: 1200px;
-                border: solid 1px;
-                height: 600px;
-                margin-left: 50px;
-                padding-top: 10px;
-                padding-left: 20px;
-            }
-            #lineChart {
-                float: right;
-                right: 40px;
-                top: 50px;
-                position: relative;
-            }
-            #barChart {
-                position: absolute;
-                top: 100px;
-                left: 45px;
-                height: 500px;
-            }
-            .axis text {
-                font-family: SansSerif;
-                font-size: 11px;
-            }
-        </style>
-	</head>
-	<body>
-	<h2> 10yearAUSOpenMatches </h2>
+<head>
+    <meta charset="UTF-8">
+    <title>DV HW 2</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        .Mycontainer {
+            width: 1200px;
+            border: solid 1px;
+            height: 600px;
+            margin-left: 50px;
+            padding-top: 10px;
+            padding-left: 20px;
+        }
 
-		<div class="Mycontainer">
-            <label>Select a continent:</label>
-            <select id="mySelect" onchange="updateBarChart(document.getElementById('mySelect').value)">
-                <option value="Europe">Europe</option>
-                <option value="Asia">Asia</option>
-                <option value="Africa">Africa</option>
-                <option value="N America">N America</option>
-                <option value="S America">S America</option>
-                <option value="Oceania">Oceania</option>
-            </select>
-			<svg id="barChart" width="700" height="500"> </svg>
-			<svg id="lineChart" width="480" height="500"> </svg>
-		</div> 
+        #lineChart {
+            float: right;
+            right: 40px;
+            top: 50px;
+            position: relative;
+        }
 
-		<script type="text/javascript" src="js/http_d3js.org_d3.v4.js"></script>
-		<script type="text/javascript" src="js/chart1.js"></script>
-		<script type="text/javascript" src="data/data.js"></script>
-		<script type="text/javascript" src="js/lodash.js"></script>
-		<script type="text/javascript" src="js/chart2.js"></script>
-	</body>
+        #barChart {
+            position: absolute;
+            top: 100px;
+            left: 45px;
+            height: 500px;
+        }
+
+        .axis text {
+            font-family: SansSerif;
+            font-size: 11px;
+        }
+        .desc {
+            width: 1200px;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+<h2 class="text-center"> 10year AUS Open Matches </h2>
+<div class="Mycontainer">
+    <label>Select a continent:</label>
+    <select id="mySelect" onchange="updateBarChart(document.getElementById('mySelect').value)">
+        <option value="Europe">Europe</option>
+        <option value="Asia">Asia</option>
+        <option value="Africa">Africa</option>
+        <option value="N America">N America</option>
+        <option value="S America">S America</option>
+        <option value="Oceania">Oceania</option>
+    </select>
+    <svg id="barChart" width="700" height="500"></svg>
+    <svg id="lineChart" width="480" height="500"></svg>
+</div>
+<div class="desc">
+    <p class="h4">Description:</p>
+    <p>
+        The main idea of this visualizations is to analyse how each country is performing on whole of 10 years and then dig in to performance in each year of a particular country.
+    </p>
+
+    <p>
+        The first Visualization(bar chart) gives an overview of the total number of games won vs lost in stacked bar graph, in which length of green part signifies number of wins and length of orange bar signifies number of games lost.
+    </p>
+    <p>
+        On selection of any of the counties in overview chart populates the detailed view chart(line graph) with the selected country's performance in each year in a time series line chart.
+        Similar to first chart this has two lines the green line signifies wins and orange for loses. By default when overview chart is loaded detail view chart is populated with first country in the overview chart.
+    </p>
+    <p>
+        Example: On click of 'RUS' bar in overview chart the detail view shows the Russia's year wise performance in detail view chart
+    </p>
+    <p>
+        <b>Extra Credit:</b> Many counties from different continents have participated in AUS open so displaying all countries data in a single chart might make it look clumsy.
+        So, filtering countries based on continent is provided on top of the overview chart. Example: When user is interested in Asian countries performance then he need to select Asia from select drop-down
+        and both charts reflects data of Asain countries.
+    </p>
+</div>
+
+<script type="text/javascript" src="js/http_d3js.org_d3.v4.js"></script>
+<script type="text/javascript" src="js/chart1.js"></script>
+<script type="text/javascript" src="data/data.js"></script>
+<script type="text/javascript" src="js/lodash.js"></script>
+<script type="text/javascript" src="js/chart2.js"></script>
+</body>
 </html>

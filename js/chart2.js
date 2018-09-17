@@ -15,7 +15,7 @@ function updateLine(country) {
         .rangeRound([height, 0]);
 
     let z = d3.scaleOrdinal()
-        .range(["#ff8c00", "#76b7b2"]);
+        .range(["#76b7b2", "#ff8c00"]);
     let line = d3.line()
         .x(function(d) { return x(parseInt(d.Year)); })
         .y(function(d) { return y(parseInt(d.Count)); });

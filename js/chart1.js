@@ -27,7 +27,7 @@ function updateBarChart(continent) {
         .rangeRound([height, 0]);
 
     let z = d3.scaleOrdinal()
-        .range(["#ff8c00", "#76b7b2"]);
+        .range(["#76b7b2", "#ff8c00"]);
 
     d3.csv("data/main.csv", function(d, i, columns) {
         for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
