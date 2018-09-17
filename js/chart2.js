@@ -1,25 +1,25 @@
 function updateLine(country) {
     d3.select("#lineChart").selectAll("*").remove();
-    var svg = d3.select("#lineChart");
-        margin = {top: 20, right: 20, bottom: 30, left: 50},
+    let svg = d3.select("#lineChart");
+        margin = {top: 25, right: 20, bottom: 30, left: 50},
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var keys = ['Wins', 'Loses'];
-    var x = d3.scaleBand()
+    let keys = ['Wins', 'Loses'];
+    let x = d3.scaleBand()
         .rangeRound([0, width])
         .paddingInner(0.1);
 
-    var y = d3.scaleLinear()
+    let y = d3.scaleLinear()
         .rangeRound([height, 0]);
 
-    var z = d3.scaleOrdinal()
+    let z = d3.scaleOrdinal()
         .range(["#ff8c00", "#76b7b2"]);
-    var line = d3.line()
+    let line = d3.line()
         .x(function(d) { return x(parseInt(d.Year)); })
         .y(function(d) { return y(parseInt(d.Count)); });
-    var line2 = d3.line()
+    let line2 = d3.line()
         .x(function(d) { return x(parseInt(d.Year)); })
         .y(function(d) { return y(parseInt(d.Count1)); });
 
@@ -31,10 +31,9 @@ function updateLine(country) {
     y.domain([0, d3.max(data, function(d) { return d3.max([parseInt(d.Count), parseInt(d.Count1)]); })]).nice();
 
     g.append("g")
+        .attr("class", "axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x))
-        .select(".domain")
-        .remove();
+        .call(d3.axisBottom(x));
 
     g.append("g")
         .call(d3.axisLeft(y))
@@ -54,11 +53,7 @@ function updateLine(country) {
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr("stroke-width", 3)
-        .attr("d", line)
-        .append('title') // Tooltip
-        .text(function (d) {
-            return 'No of games won'
-        });
+        .attr("d", line);
 
     g.append("path")
         .datum(data)
@@ -73,7 +68,15 @@ function updateLine(country) {
         .text(function (d) {
             return 'No of games lost'
         });
-    var legend = g.append("g")
+    svg.append("text")
+        .attr("x", (width + margin.left + margin.right) / 2)
+        .attr("y", 15)
+        .attr('font-weight', 'bold')
+        .attr("class", "title")
+        .attr("text-anchor", "middle")
+        .text("Comparison of " + country + "'s games won vs lost over the years");
+
+    let legend = g.append("g")
         .attr("font-family", "sans-serif")
         .attr("font-size", 10)
         .attr("text-anchor", "end")

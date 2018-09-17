@@ -3,15 +3,39 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>DV HW 2</title>
-		<link href="chart1.css" rel="stylesheet" type="text/css" >
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-
+		<link rel="stylesheet" href="bootstrap.css">
+        <style>
+            .Mycontainer{
+                width: 1200px;
+                border: solid 1px;
+                height: 600px;
+                margin-left: 50px;
+                padding-top: 10px;
+                padding-left: 20px;
+            }
+            #lineChart {
+                float: right;
+                right: 40px;
+                top: 50px;
+                position: relative;
+            }
+            #barChart {
+                position: absolute;
+                top: 100px;
+                left: 45px;
+                height: 500px;
+            }
+            .axis text {
+                font-family: SansSerif;
+                font-size: 11px;
+            }
+        </style>
 	</head>
 	<body>
 	<h2> 10yearAUSOpenMatches </h2>
 
 		<div class="Mycontainer">
+            <label>Select a continent:</label>
             <select id="mySelect" onchange="updateBarChart(document.getElementById('mySelect').value)">
                 <option value="Europe">Europe</option>
                 <option value="Asia">Asia</option>
@@ -24,11 +48,10 @@
 			<svg id="lineChart" width="480" height="500"> </svg>
 		</div> 
 
-		<script type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
-		<script src="js/chart1.js"></script>
-		<script src="data/data.js"></script>
-		<script src="js/lodash.js"></script>
-		<script src="data/factory.js"></script>
-		<script src="js/chart2.js"></script>
+		<script type="text/javascript" src="js/http_d3js.org_d3.v4.js"></script>
+		<script type="text/javascript" src="js/chart1.js"></script>
+		<script type="text/javascript" src="data/data.js"></script>
+		<script type="text/javascript" src="js/lodash.js"></script>
+		<script type="text/javascript" src="js/chart2.js"></script>
 	</body>
 </html>

@@ -3,6 +3,8 @@
     border: solid 1px;
     height: 600px;
     margin-left: 50px;
+    padding-top: 10px;
+    padding-left: 20px;
 }
 .axis .domain {
   stroke: #000;
