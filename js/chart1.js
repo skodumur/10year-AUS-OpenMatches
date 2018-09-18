@@ -21,7 +21,8 @@ function updateBarChart(continent) {
 
     let x = d3.scaleBand()
         .rangeRound([0, width])
-        .paddingInner(0.2);
+        .paddingInner(0.2)
+        .paddingOuter(0.2);
 
     let y = d3.scaleLinear()
         .rangeRound([height, 0]);
