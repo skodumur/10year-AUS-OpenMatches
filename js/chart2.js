@@ -62,7 +62,11 @@ function updateLine(country) {
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr("stroke-width", 3)
-        .attr("d", line);
+        .attr("d", line)
+        .append('title') // Tooltip
+        .text(function (d) {
+            return 'No of games won'
+        });
 
     g.append("path")
         .datum(data)

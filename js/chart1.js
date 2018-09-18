@@ -15,7 +15,7 @@ function updateBarChart(continent) {
     d3.select("#barChart").selectAll('*').remove();
     let svg = d3.select("#barChart"),
     margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = +svg.attr("width") - margin.left - margin.right,
+    width = +svg.attr("width") - margin.left - margin.right - 30,
     height = +svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -98,13 +98,13 @@ function updateBarChart(continent) {
             .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
         legend.append("rect")
-            .attr("x", width - 19)
+            .attr("x", width + 30)
             .attr("width", 19)
             .attr("height", 19)
             .attr("fill", z);
 
         legend.append("text")
-            .attr("x", width - 24)
+            .attr("x", width +25)
             .attr("y", 9.5)
             .attr("dy", "0.32em")
             .text(function(d) { return d; });
