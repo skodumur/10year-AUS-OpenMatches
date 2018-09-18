@@ -50,6 +50,7 @@ function updateLine(country) {
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", "0.71em")
+        .attr("font-weight", "bold")
         .attr("text-anchor", "end")
         .text("No. of games");
 

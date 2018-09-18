@@ -78,15 +78,14 @@ function updateBarChart(continent) {
             .text("Countries");
 
         g.append("g")
-            .attr("class", "axis")
-            .call(d3.axisLeft(y).ticks(null, "s"))
+            .call(d3.axisLeft(y))
             .append("text")
-            .attr("x", 2)
-            .attr("y", y(y.ticks().pop()) + 0.5)
-            .attr("dy", "0.32em")
             .attr("fill", "#000")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", "0.71em")
             .attr("font-weight", "bold")
-            .attr("text-anchor", "start")
+            .attr("text-anchor", "end")
             .text("No. of games");
 
         let legend = g.append("g")
