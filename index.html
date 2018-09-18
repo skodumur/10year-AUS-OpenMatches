@@ -6,11 +6,12 @@
     <link rel="stylesheet" href="bootstrap.css">
     <style>
         .Mycontainer {
+            margin-top: 15px;
             width: 1200px;
             border: solid 1px;
-            height: 600px;
+            height: 650px;
             margin-left: 50px;
-            padding-top: 10px;
+            padding-top: 40px;
             padding-left: 20px;
         }
 
@@ -23,7 +24,7 @@
 
         #barChart {
             position: absolute;
-            top: 100px;
+            top: 220px;
             left: 45px;
             height: 500px;
         }
@@ -36,10 +37,21 @@
             width: 1200px;
             margin: 50px;
         }
+        .names {
+            width: 1200px;
+            margin-left: 50px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-<h2 class="text-center"> 10year AUS Open Matches </h2>
+<div style="width: 1200px; margin-top: 20px">
+    <p class="text-center h2"> 10year AUS Open Matches </p>
+</div>
+<div class="names">
+    <label > CSE 578 Data Visualization </label>
+    <label class="float-right"> Sumanth Kodumur Submitted on:09/17/2018 </label>
+</div>
 <div class="Mycontainer">
     <label>Select a continent:</label>
     <select id="mySelect" onchange="updateBarChart(document.getElementById('mySelect').value)">
