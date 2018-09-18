@@ -33,7 +33,15 @@ function updateLine(country) {
     g.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x))
+        .append("text")
+        .attr("x", width/2)
+        .attr("y", 25)
+        .attr("dy", "0.32em")
+        .attr("fill", "#000")
+        .attr("font-weight", "bold")
+        .attr("text-anchor", "start")
+        .text("Years");
 
     g.append("g")
         .call(d3.axisLeft(y))
