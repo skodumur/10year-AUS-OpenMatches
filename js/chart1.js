@@ -112,11 +112,11 @@ function updateBarChart(continent) {
 
         svg.append("text")
             .attr("x", (width + margin.left + margin.right) / 2)
-            .attr("y", 15)
+            .attr("y", 12)
             .attr('font-weight', 'bold')
             .attr("class", "title")
             .attr("text-anchor", "middle")
-            .text("Comparison of " + name + " point between winners and losers over the years");
+            .text("Comparison of games won vs lost over the countries");
 
         svg.selectAll("rect")
             .on("click",function (d) {

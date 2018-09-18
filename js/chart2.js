@@ -2,7 +2,7 @@ function updateLine(country) {
     d3.select("#lineChart").selectAll("*").remove();
     let svg = d3.select("#lineChart");
         margin = {top: 25, right: 20, bottom: 30, left: 50},
-        width = +svg.attr("width") - margin.left - margin.right,
+        width = +svg.attr("width") - margin.left - margin.right - 30,
         height = +svg.attr("height") - margin.top - margin.bottom,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -82,8 +82,8 @@ function updateLine(country) {
             return 'No of games lost'
         });
     svg.append("text")
-        .attr("x", (width + margin.left + margin.right) / 2)
-        .attr("y", 15)
+        .attr("x", (width + margin.left + 40 + margin.right) / 2)
+        .attr("y", 12)
         .attr('font-weight', 'bold')
         .attr("class", "title")
         .attr("text-anchor", "middle")
@@ -99,13 +99,13 @@ function updateLine(country) {
         .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
     legend.append("rect")
-        .attr("x", width - 19)
+        .attr("x", width + 30 )
         .attr("width", 19)
         .attr("height", 19)
         .attr("fill", z);
 
     legend.append("text")
-        .attr("x", width - 24)
+        .attr("x", width + 25)
         .attr("y", 9.5)
         .attr("dy", "0.32em")
         .text(function(d) { return d; });
